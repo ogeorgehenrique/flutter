@@ -24,6 +24,7 @@ Ela foi projetada para ser:
 | Hoje    | Dart é usada em milhares de apps, inclusive produtos do próprio Google (GPay, Ads, Nest, etc.) |
 
 
+---
 # Fundamentos da Linguagem Dart
 
 Vamos agora montar o alicerce que sustenta qualquer app Flutter:
@@ -108,7 +109,7 @@ if (nome != null) {
 ```
 # 5. Números: int, double, num
 
-# - int
+##  int
 Representa números inteiros (positivos ou negativos), armazena com precisão total até 64 bits.
 Exemplo de uso:
 ```
@@ -117,7 +118,7 @@ int numero2 = 0;
 int numero3 = 99;
 ```
 
-# Métodos comuns do tipo INTEIRO:
+## Métodos comuns do tipo INTEIRO:
 
 - .isEven
 
@@ -193,7 +194,7 @@ Contudo, caso não seja possivél transformar em inteiro ele acusará um erro:
 print(int.tryParse("teste")); //null
 ```
 
-# - double
+## double
 Ponto flutuante de precisão dupla (IEEE 754).
 
 Exemplo de uso:
@@ -203,11 +204,12 @@ int numero2 = 0;
 int numero3 = 0.1;
 ```
 
-# Métodos comuns do tipo DOUBLE:
+## Métodos comuns do tipo DOUBLE:
 
 POSSUI OS MESMOS METODOS DO INTEIRO 
 
-- num
+## num
+
 **Supertipo de int e double**, aceita ambos, útil para variáveis que podem ser qualquer número.
 
 Exemplo de uso:
@@ -235,9 +237,9 @@ Em Dart, uma `String` é uma sequência de caracteres UTF-16 imutável (não pod
 
 Dart é otimizado para lidar com strings de forma eficiente, inclusive para aplicações gráficas (como no Flutter).
 
-Formas de declarar strings
+Formas de declarar strings:
 
-# - Aspas simples ou duplas
+## - Aspas simples ou duplas
 
 Ambas são equivalentes:
 
@@ -245,7 +247,7 @@ Ambas são equivalentes:
 String nome = 'George';
 String cidade = "Cuiabá";
 ```
-# - Strings multilinha ou Dicionário
+## - Strings multilinha ou Dicionário
 
 Usa-se três aspas:
 ```
@@ -256,7 +258,7 @@ e café!
 ''';
 ```
 
-# - Interpolação de Strings
+## - Interpolação de Strings
 
 Você pode inserir variáveis ou expressões diretamente na string com $:
 
@@ -269,7 +271,7 @@ String calc = '5 + 3 = ${5 + 3}';
 ```
 Se for uma expressão ou método, use ${}.
 
-# Métodos comuns do tipo DOUBLE:
+## Métodos comuns do tipo STRING:
 
 - .length
 
@@ -310,22 +312,25 @@ nome.toLowerCase() //george
 - .contains()
 
 Verifica se contém um trecho de uma String dentro de outra
+
 ```
 nome = "george"
 print(nome.contains("ge"));
-
+```
 
 - .replaceAll()
 
 Substitui todos os trechos de uma String em outra
+
 ```
 nome = "george"
 nome.replaceAll('e', '3')
 ```
 
-- .substring()
+- .substring(startIndex, endIndex)
 
 Recorta parte da String, sendo a posição 0 o inicio de qualquer String, o método .substring pode receber dois parametros, o primeiro indicando onde iniciar a coleta da String e o segundo indicando quantos carateres deve ser lidos, caso haja apenas um paremetro o método retorna toda a String iniciando pela posição informada.
+
 ```
 nome = "george"
 nome.substring(3) //rge
@@ -350,12 +355,739 @@ print(" george ".trimLeft());
 print(" george ".trimRight());
 ```
 
+# String imutável e segurança!
+
+Por ser imutável, String é segura para ser usada como chave de Map, em manipulações concorrentes, e mais resistente a bugs relacionados a mutabilidade de estado.
+
+# 8. Coleções: List, Set, Map
+
+As coleções são fundamentais na programação em Dart (e em Flutter), pois ajudam a armazenar, organizar e manipular dados em grupo.
+
+Dart oferece três coleções principais:
+- List → Lista ordenada de elementos.
+- Set → Conjunto de elementos únicos.
+- Map → Conjunto de pares chave/valor.
+
+## 1. List: Lista Ordenada de Elementos
+
+Em Dart, uma lista é uma estrutura de dados que armazena uma coleção ordenada de itens. É como um array em outras linguagens, mas com algumas diferenças e recursos adicionais. As listas em Dart podem armazenar itens de diferentes tipos e podem ser manipuladas usando vários métodos e operadores. 
+
+Uma lista pode:
+- Armazena elementos em ordem.
+- Permite duplicatas.
+- Pode ser mutável ou imutável.
+
+Como criar uma lista em Dart:
+
+1. Listas literais:
+Usando colchetes [  ] para envolver os elementos da lista, separados por vírgulas.
+
+Exemplo:
+```
+List<int> numeros = [1, 2, 3, 4, 5];
+
+List<String> frutas = ['Maçã', 'Banana', 'Laranja'];
+
+// Lista com tipo dinâmico (não recomendado em produção)
+var numeros = [1, 2, 3, 4];
+```
+
+2. Usando o construtor List():
+
+```
+Exemplo: List<String> frutas = List();
+```
 
 
+## Métodos comuns do tipo LIST:
+
+- .add(element)
+
+Adiciona um elemento ao final da lista.
+
+```
+frutas.add('Uva');
+```
+
+- .insertelement)
+
+Adiciona um elemento na lista na posição informada no parametro
+
+```
+frutas.insert(1, 'Manga');   // Adiciona na posição 1
+```
+
+- .remove(element)
+
+Remove a primeira ocorrência do elemento da lista.
+
+```
+frutas.remove('Banana');     // Remove por valor
+```
+
+- .removeAt(index):
+
+Remove o elemento no índice especificado passado por parametro.
+
+```
+frutas.removeAt(0);          // Remove por índice
+```
+
+- .contains(element)
+
+Verifica se a lista contém o elemento especificado, caso haja ele retorna true
+
+```
+frutas.contains('Uva');      // true
+```
+
+- .length
+
+Retorna o número de elementos na lista.
+
+```
+frutas.length;               // Tamanho da lista
+```
+
+- Acesso direto aos elementos da lista.
+
+```
+frutas[0];                   // Acessa o primeiro elemento
+```
+
+- .isEmpty e .isNotEmpty
+
+Verifica se a lista está vazia ou não.
+
+```
+print(frutas.isEmpty); //false
+print(lstInt.isNotEmpty); //true
+```
+
+- .indexOf(element):
+
+Retorna o índice da primeira ocorrência do elemento.
+
+```
+frutas.indexOf("banaba");
+```
+
+- .sort()
+
+Ordena a lista. Para listas de objetos, é necessário fornecer uma função de comparação.
+
+- .shuffle()
+
+Embaralha os elementos da lista.
 
 
+- .sublist(startIndex, endIndex)
+
+Cria uma nova lista com uma parte da lista original.
 
 
+- .clear()
+
+Remove todos os elementos da lista. 
+
+
+# 2. Set: Conjunto Não Ordenado de Valores Únicos
+
+Em Dart, um `Set` é um tipo de coleção que armazena um conjunto não ordenado de valores únicos. Isso significa que cada elemento em um `Set` **deve ser diferente dos demais**, e a ordem em que os elementos são adicionados ou iterados não é garantida. 
+
+Características principais:
+
+- Não ordenado:
+A ordem dos elementos em um `Set` não é significativa. Quando você itera sobre um `Set`, a ordem dos elementos pode variar entre diferentes execuções ou em diferentes implementações.
+
+- Valores únicos:
+Um `Set` não permite elementos duplicados. Se você tentar adicionar um valor que já existe no `Set`, a operação será ignorada.
+
+- Uso comum:
+Sets são úteis quando você precisa garantir que uma coleção contenha apenas valores distintos e não se importa com a ordem. 
+
+Exemplo de uso: 
+
+```
+void main() {
+  Set<String> meuSet = {'apple', 'banana', 'cherry'};
+  print(meuSet); // Saída: {apple, banana, cherry} (a ordem pode variar)
+
+  meuSet.add('apple'); // Tentar adicionar 'apple' novamente (duplicado) Ñ SERÁ ADD
+  print(meuSet); // Saída: {apple, banana, cherry} (continua com os mesmos elementos)
+
+  meuSet.add('date');
+  print(meuSet); // Saída: {apple, banana, cherry, date} (novo elemento adicionado)
+}
+```
+
+## Métodos comuns do tipo SET:
+
+Possui os mesmos metodos de LIST
+
+# 3. Map: Estrutura Chave → Valor
+
+Em Dart, um Map é uma estrutura de dados que armazena pares chave-valor. Cada chave no mapa é única e usada para acessar o valor associado a ela. 
+
+Estrutura:
+Um mapa em Dart é declarado usando a sintaxe `Map<Chave, Valor>`, onde Chave e Valor são os tipos de dados das chaves e valores, respectivamente.
+
+Por exemplo: 
+```
+Map<String, int> frutas = {
+  'banana': 3,
+  'maçã': 5,
+  'laranja': 2,
+};
+```
+Neste exemplo, frutas é um mapa onde as chaves são strings (nomes das frutas) e os valores são inteiros (quantidades). 
+
+As chaves devem ser únicas, valores podem se repetir. o map é muito útil para representar objetos com propriedades.
+
+- Acessar um valor
+
+Use a chave entre colchetes para obter o valor correspondente
+
+```
+int quantidadeBanana = frutas['banana']; // quantidadeBanana terá o valor 3
+```
+
+- Adiciona um par chave-valor dentro de um Map
+
+```
+frutas['morango'] = 7;
+```
+
+- Remove um par chave-valor dentro de um Map
+
+```
+frutas.remove('maçã');
+```
+
+- Verifica se uma chave existe dentro de um Map
+
+```
+bool temLaranja;
+temLaranja = frutas.containsKey('laranja'); // temLaranja será true
+```
+- .length
+
+Retorna o número de pares chave-valor no mapa.
+
+```
+print(frutas.length);
+```
+
+- .isEmpty e .isNotEmpty
+
+Verifica se o map mapa estiver vazio retornando true caso seja verdade, ja isNotEmpty faz o a verificação se o mapa NÃO está vazio.
+
+```
+print(frutas.isNotEmpty);
+print(frutas.isEmpty);
+```
+
+- .keys
+
+Retorna um Iterable com todas as chaves do mapa.
+
+
+- .values
+
+Retorna um Iterable com todos os valores do mapa.
+
+
+- clear()
+
+Remove todos os pares chave-valor do mapa.
+
+
+ # 9. Const vs Final vs Var
+
+Em Dart, `const`, `final` e `var` são usados para declarar variáveis, mas com diferenças importantes. `const` é usado para constantes de tempo de compilação, cujos valores devem ser **conhecidos no momento da compilação e nunca mudam**. 
+
+`final` é usado para **variáveis que são atribuídas apenas uma vez**, seja no momento da declaração ou em tempo de execução, mas depois disso, seu valor não pode ser alterado. 
+
+`var` é usado quando o tipo da variável não é conhecido ou é inferido pelo compilador, permitindo que a variável seja reatribuída com valores de tipos diferentes. 
+
+## `const` (Constante de Tempo de Compilação):
+
+1. Define uma variável cujo valor é conhecido e imutável durante a compilação.
+2. Usado para valores que são constantes em tempo de execução e não podem mudar.
+3. Ideal para valores que são conhecidos antes mesmo da execução do programa. 
+
+Exemplo: `const pi = 3.14159;`
+
+## `final` (Variável de Atribuição Única):
+
+1. Define uma variável cujo valor é atribuído apenas uma vez, seja em tempo de compilação ou execução.
+2. Depois de atribuído, o valor não pode ser alterado, mas o objeto referenciado pode ser mutável.
+3. Útil para variáveis que podem ter valores diferentes em diferentes execuções, mas não devem ser alteradas dentro da mesma execução.
+
+Exemplo: `final name = "João";` ou `final List<int> numbers = [1, 2, 3];` 
+
+## `var` (Variável Genérica):
+
+1. Declara uma variável cujo tipo é inferido pelo compilador ou explicitamente declarado.
+2. Permite que a variável seja reatribuída com valores de tipos diferentes.
+3. Útil quando o tipo da variável não é conhecido ou é indiferente.
+
+Exemplo: `var message = "Olá";` ou `var number = 10;` 
+
+## Diferenças entre as Chaves:
+
+- Tempo de Avaliação:
+
+`const` é avaliado em tempo de compilação, enquanto `final` é avaliado em tempo de execução (na primeira atribuição).
+
+- Imutabilidade:
+
+`const` garante imutabilidade tanto do valor quanto do objeto, enquanto `final` garante apenas que o valor não seja alterado após a atribuição, mas o objeto pode ser mutável.
+
+- Reatribuição:
+`var` permite reatribuição, enquanto `const` e `final` não permitem.
+
+- Uso:
+
+Use `const` para constantes que são conhecidas no momento da compilação e `final` para variáveis que são atribuídas uma vez em tempo de execução. 
+
+----
+
+# 10. Estruturas Condicionais e de Repetição
+
+Em Dart, estruturas condicionais e de repetição são usadas para controlar o fluxo de execução do código. As estruturas condicionais (`if`, `else`, `switch`) permitem que o programa execute diferentes blocos de código com base em condições. 
+
+As estruturas de repetição (`for`, `while`, `do-while`) executam um bloco de código várias vezes, seja com um número definido de iterações ou enquanto uma condição for verdadeira. 
+
+# Estruturas Condicionais:
+
+## if
+
+Executa um bloco de código se a condição for verdadeira. 
+
+Sintaxe:
+```
+if (condição) {
+  // código executado se for verdadeiro
+```
+
+## else
+
+Executa um bloco de código se a condição do if for falsa. 
+
+Sintaxe:
+```
+if (condição) {
+  // código executado se for verdadeiro
+} else {
+  // executado se nenhuma das anteriores for verdadeira
+}
+```
+
+## else if
+
+Permite verificar várias condições consecutivas. Se a condição anterior for falsa, a próxima condição é avaliada. 
+
+Sintaxe:
+```
+if (condição) {
+  // código executado se for verdadeiro
+} else if (outraCondição) {
+  // executado se a outraCondição for verdadeira
+} else {
+  // executado se nenhuma das anteriores for verdadeira
+}
+```
+
+## if com operador ternário (condição em uma linha)
+
+Em Dart, o operador ternário é uma forma concisa de escrever expressões condicionais, similar ao uso de if/else. Ele permite escolher entre dois valores com base em uma condição booleana.
+
+ Sintaxe:
+```
+condição ? valorSeVerdadeiro : valorSeFalso;
+```
+
+Exemplo:
+```
+void main() {
+  int idade = 20;
+  String mensagem = idade >= 18 ? "Maior de idade" : "Menor de idade";
+  print(mensagem); // Saída: Maior de idade
+}
+```
+**Explicação:**
+1. `condição`: Uma expressão booleana que é avaliada. No exemplo, `idade >= 18` é a condição.
+2. `?`: Se a condição for verdadeira, o valor após o `?` é retornado.
+3. `valorSeVerdadeiro`: O valor a ser retornado se a condição for verdadeira. No exemplo, "Maior de idade".
+4. `::` Se a condição for falsa, o valor após o `:` é retornado.
+5. `valorSeFalso`: O valor a ser retornado se a condição for falsa. No exemplo, "Menor de idade". 
+
+O operador ternário é útil para simplificar o código quando você precisa escolher entre duas opções com base em uma condição simples. Ele é frequentemente usado em expressões mais curtas e limpas, especialmente em situações onde você precisa atribuir um valor a uma variável com base em uma condição, como no exemplo acima. 
+
+
+## switch
+
+Em Dart, a estrutura switch com case é usada para executar diferentes blocos de código com base no valor de uma expressão. É uma alternativa mais elegante e legível para várias estruturas if-else aninhadas, especialmente quando se lida com múltiplas opções baseadas em um valor. 
+
+Sintaxe:
+```
+Código
+
+switch (expressao) {
+  case valor1:
+    // Código a ser executado se expressao == valor1
+    break;
+  case valor2:
+    // Código a ser executado se expressao == valor2
+    break;
+  default:
+    // Código a ser executado se nenhum dos casos corresponder
+}
+```
+Explicação:
+1. `switch (expressao)`: A palavra-chave switch seguida pela expressão a ser avaliada.
+2. `case valor1:`: Cada case verifica se a expressão corresponde a um valor específico.
+3. `break;`: O break é crucial para sair do bloco switch após a execução do caso correspondente. Sem o break, a execução "cai" para o próximo case.
+4. `default:`: O bloco default é opcional e executado se nenhum dos casos corresponder à expressão.
+5. Os tipos de dados da expressão e dos valores dos cases devem ser compatíveis.
+6. As cláusulas case devem ser constantes ou expressões constantes. 
+
+Exemplo:
+```
+void main() {
+  int diaDaSemana = 3;
+
+  switch (diaDaSemana) {
+    case 1:
+      print("Domingo");
+      break;
+    case 2:
+      print("Segunda-feira");
+      break;
+    case 3:
+      print("Terça-feira");
+      break;
+    case 4:
+      print("Quarta-feira");
+      break;
+    case 5:
+      print("Quinta-feira");
+      break;
+    case 6:
+      print("Sexta-feira");
+      break;
+    case 7:
+      print("Sábado");
+      break;
+    default:
+      print("Dia inválido");
+  }
+}
+```
+O Dart 3 introduziu o recurso de expressões de switch, que oferecem uma forma mais concisa e funcional de lidar com casos. 
+
+## Switch Expressions (Dart 3):
+As expressões de switch permitem retornar um valor diretamente do switch, tornando o código mais compacto e legível. 
+
+```
+String getDiaDaSemana(int dia) {
+  return switch (dia) {
+    1 => "Domingo",
+    2 => "Segunda-feira",
+    3 => "Terça-feira",
+    4 => "Quarta-feira",
+    5 => "Quinta-feira",
+    6 => "Sexta-feira",
+    7 => "Sábado",
+    _ => "Dia inválido",
+  };
+}
+```
+
+
+Neste exemplo, a função `getDiaDaSemana` retorna o nome do dia correspondente ao número fornecido, utilizando a expressão de switch. O `_` substitui o default na sintaxe anterior. 
+
+
+# Estruturas de Repetição:
+
+## for
+  
+Em Dart, a estrutura de repetição for é usada para executar um bloco de código repetidamente, com base em uma condição. Ela é particularmente útil quando se sabe quantas vezes o loop precisa ser executado. 
+Estrutura básica do for:
+
+```
+for (inicialização; condição; incremento/decremento) {
+  // Bloco de código a ser executado repetidamente
+}
+```
+
+Exemplo:
+```
+void main() {
+  for (int i = 1; i <= 5; i++) {
+    print(i);
+  }
+}
+```
+
+Explicação:
+1. `int i = 1;`: Inicializa a variável de controle i com o valor 1.
+2. `i <= 5;`: Define a condição para que o loop continue. O loop irá rodar enquanto i for menor ou igual a 5.
+3. `i++`: Incrementa o valor de i em 1 a cada iteração.
+4. `print(i);`: O bloco de código dentro do loop, que imprime o valor atual de i em cada iteração.
+
+
+## for in
+
+Em Dart, o `for...in` é uma estrutura de iteração usada para percorrer elementos em coleções, como listas ou conjuntos. Ele simplifica a iteração, permitindo que você acesse cada elemento diretamente, sem a necessidade de gerenciar índices ou contadores. 
+
+Sintaxe:
+
+```
+for (var item in collection) {
+  // Código a ser executado para cada 'item' na 'collection'
+}
+```
+
+Exemplo:
+```
+void main() {
+  var frutas = ['maçã', 'banana', 'laranja'];
+
+  for (var fruta in frutas) {
+    print(fruta);
+  }
+}
+```
+Saída:
+```
+maçã
+banana
+laranja
+```
+
+**Explicação:**
+1. `for (var fruta in frutas)`: Este laço "for...in" itera sobre a lista frutas.
+2. `var fruta`: Em cada iteração, o valor atual da lista é atribuído à variável fruta.
+3. `print(fruta)`: Imprime o valor atual da variável fruta em cada iteração, mostrando cada fruta da lista.
+
+## Outras coleções:
+
+O "for...in" também pode ser usado com outros tipos de coleções em Dart, como:
+1. Sets: Para iterar sobre elementos únicos em um conjunto.
+2. Maps: Para iterar sobre as chaves de um mapa, ou sobre pares chave-valor (com chaves e valores separados).
+
+Exemplo com mapa:
+
+```
+void main() {
+  var mapa = {'nome': 'João', 'idade': 30, 'cidade': 'São Paulo'};
+
+  for (var chave in mapa.keys) {
+    print('Chave: $chave, Valor: ${mapa[chave]}');
+  }
+}
+```
+Saída:
+```
+Chave: nome, Valor: João
+Chave: idade, Valor: 30
+Chave: cidade, Valor: São Paulo
+```
+
+
+## Vantagens do "for...in":
+
+- Legibilidade: Torna o código mais limpo e fácil de entender, especialmente quando se trabalha com coleções.
+- Concisão: Elimina a necessidade de criar e gerenciar contadores, tornando o código mais curto.
+- Segurança: Evita erros comuns de índice que podem ocorrer com loops for tradicionais.
+
+
+## while 
+
+Em Dart, a estrutura `while` é usada para criar um loop que executa um bloco de código repetidamente enquanto uma condição booleana for verdadeira. A condição é verificada antes de cada iteração do loop. Se a condição for falsa, o loop não será executado nenhuma vez. O `while` é uma estrutura fundamental para controlar o fluxo de execução em programas Dart, permitindo a repetição de tarefas com base em critérios específicos. 
+
+Sintaxe:
+
+```
+while (condicao) {
+  // Código a ser executado enquanto a condição for verdadeira
+}
+```
+
+**Funcionamento:**
+1. Avaliação da Condição:
+Antes de cada iteração do loop, a expressão condicao é avaliada.
+2. Execução do Bloco: Se a condição for verdadeira, o bloco de código dentro do while é executado.
+3. Repetição: O processo de avaliação da condição e execução do bloco se repete enquanto a condição permanecer verdadeira.
+4. Saída do Loop: Quando a condição se torna falsa, o loop é interrompido, e o programa continua a execução após o bloco `while`. 
+
+Exemplo:
+
+```
+void main() {
+  int numero = 1;
+  while (numero <= 5) {
+    print(numero);
+    numero++; // Incrementa o valor de 'numero' para evitar um loop infinito
+  }
+}
+```
+
+Neste exemplo: 
+1. A variável numero é inicializada com o valor 1.
+2. O loop while continua enquanto numero for menor ou igual a 5.
+3. Dentro do loop, o valor atual de numero é impresso e, em seguida, numero é incrementado.
+4. O resultado será a impressão dos números de 1 a 5, cada um em uma linha separada.
+
+**Importante:**
+É crucial garantir que a condição do while eventualmente se torne falsa para evitar loops infinitos.
+
+A estrutura break pode ser usada para sair do loop while prematuramente, mesmo que a condição ainda seja verdadeira, como descreve um tutorial do Dart. 
+
+Em situações onde é necessário garantir que o bloco de código seja executado pelo menos uma vez, a estrutura do-while pode ser mais adequada. 
+
+## do-while
+
+Em Dart, a estrutura `do-while` executa um bloco de código pelo menos uma vez e depois repete a execução enquanto uma determinada condição for verdadeira. A diferença chave em relação ao loop `while` é que a condição é avaliada após a execução do bloco de código, garantindo que o bloco seja sempre executado pelo menos uma vez. 
+
+Sintaxe:
+
+```
+do {
+  // Bloco de código a ser repetido
+} while (condicao);
+```
+
+**Funcionamento:**
+
+1. Execução inicial: O bloco de código dentro do `do` é executado pela primeira vez, independentemente da condição.
+2. Avaliação da condição: Após a execução do bloco, a condicao é avaliada. Se a condição for verdadeira, o bloco de código é executado novamente.
+3. Repetição: O processo de execução do bloco e avaliação da condição continua até que a condicao se torne falsa.
+4. Finalização: Quando a condicao é falsa, o loop `do-while` é interrompido, e a execução do programa continua na próxima linha após o loop. 
+
+Exemplo:
+
+```
+void main() {
+  int i = 1;
+  do {
+    print(i);
+    i++;
+  } while (i <= 5);
+}
+```
+
+
+1. Neste exemplo, o código dentro do `do` (que imprime o valor de i e o incrementa) será executado pelo menos uma vez.
+2. Na primeira execução, i é 1, então "1" será impresso. Em seguida, i é incrementado para 2.
+3. A condição `i <= 5` é então avaliada como verdadeira, então o loop continua. Este processo se repete até que i se torne 6, momento em que a condição se torna falsa e o loop é interrompido.
+
+## Diferença entre while e do-while:
+- `while`: A condição é avaliada antes da execução do bloco de código. Se a condição for falsa inicialmente, o bloco nunca será executado.
+  
+- `do-while`: A condição é avaliada após a execução do bloco de código. O bloco será executado pelo menos uma vez, mesmo que a condição seja falsa inicialmente. 
+
+---
+
+# 11. Funções em Dart
+
+Em Dart, funções são objetos de primeira classe, o que significa que podem ser passadas como argumentos para outras funções, retornadas de outras funções e atribuídas a variáveis. Funções em Dart podem ser nomeadas ou anônimas ( funções lambda ) e podem ter zero ou mais parâmetros. Elas podem retornar valores ou não (funções com tipo de retorno void). 
+
+Estrutura básica de uma função em Dart:
+
+```
+tipo_de_retorno nome_da_funcao(parametros) {
+  // Corpo da função (código a ser executado)
+  // ...
+  return valor_de_retorno; // Opcional, dependendo do tipo_de_retorno
+}
+```
+
+Exemplos:
+Função sem parâmetros e sem retorno. 
+```
+void imprimirMensagem() {
+  print('Olá, mundo!');
+}
+```
+Função com parâmetros e com retorno. 
+
+```
+int somar(int a, int b) {
+  return a + b;
+}
+```
+
+Função com parâmetros opcionais. 
+
+```
+String saudar(String nome, {String? titulo}) {
+  if (titulo != null) {
+    return 'Olá, $titulo $nome!';
+  } else {
+    return 'Olá, $nome!';
+  }
+}
+```
+
+Função anônima (lambda). 
+
+```
+var dobrar = (int numero) => numero * 2;
+```
+Função que recebe uma função como paremtro:
+
+```
+int executar( int numero, Funcion funf){
+	return func(numero);
+}
+``
+
+**Principais características das funções em Dart:**
+1. Objetos de primeira classe: Funções podem ser tratadas como qualquer outro tipo de dado.
+2. Tipagem estática: Dart é uma linguagem com tipagem estática, o que significa que o tipo de retorno e os tipos de parâmetros devem ser especificados.
+3. Parâmetros opcionais: Dart permite definir parâmetros opcionais nomeados e posionais, facilitando a criação de funções mais flexíveis.
+4. Funções assíncronas: Dart suporta funções assíncronas, que podem retornar um valor no futuro, permitindo a execução de operações de longa duração sem bloquear a thread principal.
+5. Funções com efeitos colaterais: Funções podem ter efeitos colaterais, como modificar o estado de variáveis globais ou realizar operações de entrada/saída.
+6. Escopo: Variáveis definidas dentro de uma função são locais e só podem ser acessadas dentro dela. Variáveis globais são acessíveis em qualquer lugar do código, mas seu uso excessivo pode levar a problemas de manutenção. 
+
+Exemplo completo:
+
+```
+void main() {
+  imprimirMensagem();
+  int resultado = somar(5, 3);
+  print('A soma é: $resultado');
+  String saudacao = saudar('João', titulo: 'Sr.');
+  print(saudacao);
+  int resultadoDobro = dobrar(4);
+  print('O dobro de 4 é: $resultadoDobro');
+}
+
+void imprimirMensagem() {
+  print('Olá, mundo!');
+}
+
+int somar(int a, int b) {
+  return a + b;
+}
+
+String saudar(String nome, {String? titulo}) {
+  if (titulo != null) {
+    return 'Olá, $titulo $nome!';
+  } else {
+    return 'Olá, $nome!';
+  }
+}
+
+var dobrar = (int numero) => numero * 2;
+```
+
+# 12. ENTRADA E SAIDA DE DADOS
+
+falta
 
 
 
@@ -370,64 +1102,10 @@ void main() {
 - print() exibe algo no console.
 
  
-3. Variáveis
 
-```
-var nome = 'George';       // tipo inferido
-String curso = 'Eng. Comp';
 
-final idade = 23;          // imutável após atribuição
-const PI = 3.1415;         // constante em tempo de compilação
-```
 
-- var: variável comum
-- final: só pode ser atribuído uma vez (em tempo de execução)
-- const: constante de tempo de compilação
-
-4. Funções
-```
-int somar(int a, int b) {
-  return a + b;
-}
-
-void saudacao(String nome) {
-  print("Olá, $nome!");
-}
-```
-
-Funções podem ser anônimas e passadas como argumentos!
-
- 5. Controle de Fluxo
-
- ```
- if (idade >= 18) {
-  print("Maior de idade");
-} else {
-  print("Menor de idade");
-}
-
-for (int i = 0; i < 5; i++) {
-  print(i);
-}
-
-while (ativo) {
-  // repete enquanto 'ativo' for true
-}
-```
-
-6. Coleções (List, Set, Map)
-```
-List<String> frutas = ['maçã', 'banana', 'uva'];
-Set<int> numeros = {1, 2, 3};
-Map<String, String> usuario = {
-  'nome': 'George',
-  'email': 'george@example.com'
-};
-```
-
-List = lista (vetor, array)
-	•	Set = conjunto (sem repetição)
-	•	Map = dicionário/chave-valor
+ 
 
 7. Classes e Objetos
 
@@ -449,16 +1127,7 @@ void main() {
 }
 ```
 
-8. Null Safety (Dart 2.12+)
 
-Evita erros de null em tempo de execução.
-
-```
-String? nome; // Pode ser nulo
-nome = null;
-
-String nomeSeguro = "George"; // Nunca pode ser nulo
-```
 
 9. Programação Assíncrona (Future e async/await)
 
