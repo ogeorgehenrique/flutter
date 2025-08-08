@@ -48,10 +48,10 @@
     - [13. Orientação a Objetos](#13-orientacao-a-objetos)
     - [14. Classes](#14-classes)
       - [Instanciando um objeto](#instanciando-um-objeto)
-    - [Encapsulamento](#encapsulamento)
+    - [15. Encapsulamento](#15-encapsulamento)
       - [Getters e Setters](#getters-e-setters)
-    - [Construtor](#construtor)
-    - [Sobrescrita (overriding)](#sobrescrita-overriding)
+    - [16. Construtor](#16-construtor)
+    - [17. Sobrescrita (overriding)](#17-sobrescrita-overriding)
   
 
 ---
