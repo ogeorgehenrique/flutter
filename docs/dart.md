@@ -1245,7 +1245,7 @@ meuCarro.modelo = 'Fusca';
 meuCarro.dirigir(); // Chama o método dirigir
 ```
 
-# Encapsulamento
+# 15. Encapsulamento
 
 Em Dart, encapsulamento é o princípio de OOP que permite agrupar dados e métodos que operam sobre esses dados em uma única unidade, protegendo a implementação interna de um objeto e expondo apenas uma interface controlada para interação externa. Isso é feito principalmente através do uso de modificadores de acesso (público e privado) e, em muitos casos, de getters e setters. 
 
@@ -1313,7 +1313,7 @@ void main() {
   //minhaConta._saldo = 500.0;  // Erro! Não é possível acessar diretamente o atributo privado
 }
 ```
-## Construtor
+# 16. Construtor
 
 Em Dart, um construtor é um método especial usado para criar e inicializar objetos de uma classe. Ele é chamado automaticamente quando um novo objeto é instanciado. Construtores em Dart podem ter parâmetros e podem ser padrão, nomeados ou de fábrica. 
 
@@ -1361,7 +1361,7 @@ class Pessoa {
 
 
 
-# Sobrescrita (overriding)
+# 17. Sobrescrita (overriding)
 
 Em Dart, sobrescrita (overriding) de métodos ocorre quando uma classe filha fornece sua própria implementação de um método que já existe na classe pai (superclasse). Isso permite que a classe filha personalize o comportamento do método herdado, adaptando-o às suas necessidades específicas. A sobrescrita é um exemplo de polimorfismo, permitindo que objetos de classes diferentes respondam de maneiras diferentes a um mesmo método. 
 
