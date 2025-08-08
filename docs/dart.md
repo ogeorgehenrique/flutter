@@ -1,8 +1,6 @@
 # Índice
 
 - [O que é o Dart?](#dart)
-- [Breve História do Dart](#breve-historia-do-dart)
-- [Por que o Dart é ótimo para o Flutter?](#por-que-o-dart-e-otimo-para-o-flutter)
 - [Fundamentos da Linguagem Dart](#fundamentos-da-linguagem-dart)
   - [Tipos de Dados](#tipos-de-dados)
     - [1. Hierarquia de Tipos em Dart](#1-hierarquia-de-tipos-em-dart)
@@ -17,11 +15,9 @@
       - [num](#num)
     - [6. Booleanos: bool](#6-booleanos-bool)
     - [7. Texto: String](#7-texto-string)
-      - [Aspas simples ou duplas](#aspas-simples-ou-duplas)
       - [Strings multilinha ou Dicionário](#strings-multilinha-ou-dicionario)
       - [Interpolação de Strings](#interpolacao-de-strings)
       - [Métodos comuns do tipo STRING](#metodos-comuns-do-tipo-string)
-    - [String imutável e segurança!](#string-imutavel-e-seguranca)
     - [8. Coleções: List, Set, Map](#8-colecoes-list-set-map)
       - [1. List: Lista Ordenada de Elementos](#1-list-lista-ordenada-de-elementos)
       - [Métodos comuns do tipo LIST](#metodos-comuns-do-tipo-list)
@@ -33,16 +29,14 @@
       - [const (Constante de Tempo de Compilação)](#const-constante-de-tempo-de-compilacao)
       - [final (Variável de Atribuição Única)](#final-variavel-de-atribuicao-unica)
       - [var (Variável Genérica)](#var-variavel-generica)
-      - [Diferenças entre as Chaves](#diferencas-entre-as-chaves)
+      - [Diferenças entre eles](#diferencas-entre-eles)
     - [10. Estruturas Condicionais e de Repetição](#10-estruturas-condicionais-e-de-repeticao)
-      - [Estruturas Condicionais](#estruturas-condicionais)
         - [if](#if)
         - [else](#else)
         - [else if](#else-if)
         - [if com operador ternário (condição em uma linha)](#if-com-operador-ternario-condicao-em-uma-linha)
         - [switch](#switch)
-        - [Switch Expressions (Dart 3)](#switch-expressions-dart-3)
-      - [Estruturas de Repetição](#estruturas-de-repeticao)
+        - [switch expressions (Dart 3)](#switch-expressions-dart-3)
         - [for](#for)
         - [for in](#for-in)
         - [Outras coleções](#outras-colecoes)
@@ -52,12 +46,9 @@
     - [11. Funções em Dart](#11-funcoes-em-dart)
     - [12. ENTRADA E SAIDA DE DADOS](#12-entrada-e-saida-de-dados)
     - [13. Orientação a Objetos](#13-orientacao-a-objetos)
-      - [Conceitos Fundamentais](#conceitos-fundamentais)
     - [14. Classes](#14-classes)
-      - [Conceitos](#conceitos)
       - [Instanciando um objeto](#instanciando-um-objeto)
     - [Encapsulamento](#encapsulamento)
-      - [Como funciona o encapsulamento em Dart](#como-funciona-o-encapsulamento-em-dart)
       - [Getters e Setters](#getters-e-setters)
     - [Construtor](#construtor)
     - [Sobrescrita (overriding)](#sobrescrita-overriding)
@@ -100,7 +91,7 @@ Ela foi projetada para ser:
 	•	Ótimo suporte para UI declarativa (base do Flutter)
 
 
-📘 Resumo da Filosofia do Dart
+Resumo da Filosofia do Dart
 | Característica      | Dart                                     |
 |---------------------|------------------------------------------|
 | Paradigma           | Orientado a Objetos + Funcional          |
@@ -445,7 +436,7 @@ print(" george ".trimLeft());
 print(" george ".trimRight());
 ```
 
-# String imutável e segurança!
+**String imutável e segurança!**
 
 Por ser imutável, String é segura para ser usada como chave de Map, em manipulações concorrentes, e mais resistente a bugs relacionados a mutabilidade de estado.
 
@@ -726,22 +717,15 @@ Exemplo: `final name = "João";` ou `final List<int> numbers = [1, 2, 3];`
 
 Exemplo: `var message = "Olá";` ou `var number = 10;` 
 
-## Diferenças entre as Chaves:
+## Diferenças entre eles:
 
-- Tempo de Avaliação:
+- Tempo de Avaliação: `const` é avaliado em tempo de compilação, enquanto `final` é avaliado em tempo de execução (na primeira atribuição).
 
-`const` é avaliado em tempo de compilação, enquanto `final` é avaliado em tempo de execução (na primeira atribuição).
+- Imutabilidade: `const` garante imutabilidade tanto do valor quanto do objeto, enquanto `final` garante apenas que o valor não seja alterado após a atribuição, mas o objeto pode ser mutável.
 
-- Imutabilidade:
+- Reatribuição: `var` permite reatribuição, enquanto `const` e `final` não permitem.
 
-`const` garante imutabilidade tanto do valor quanto do objeto, enquanto `final` garante apenas que o valor não seja alterado após a atribuição, mas o objeto pode ser mutável.
-
-- Reatribuição:
-`var` permite reatribuição, enquanto `const` e `final` não permitem.
-
-- Uso:
-
-Use `const` para constantes que são conhecidas no momento da compilação e `final` para variáveis que são atribuídas uma vez em tempo de execução. 
+- Uso: Use `const` para constantes que são conhecidas no momento da compilação e `final` para variáveis que são atribuídas uma vez em tempo de execução. 
 
 ----
 
