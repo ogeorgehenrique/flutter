@@ -1,3 +1,45 @@
+# Índice
+- [Introdução](#introdução)
+  - [Objetivo](#objetivo)
+  - [Público-alvo](#público-alvo)
+- [Características do Dart](#características-do-dart)
+  - [Paradigma](#paradigma)
+  - [Tipagem](#tipagem)
+  - [Segurança de null](#segurança-de-null)
+  - [Assíncrono](#assíncrono)
+  - [Suporte a UI](#suporte-a-ui)
+  - [Compilação](#compilação)
+
+---
+
+# Introdução
+
+## Objetivo
+Texto do objetivo...
+
+## Público-alvo
+Texto do público-alvo...
+
+# Características do Dart
+
+## Paradigma
+Orientado a Objetos + Funcional
+
+## Tipagem
+Estática com inferência
+
+## Segurança de null
+Sim (null safety)
+
+## Assíncrono
+Sim, com Future, Stream
+
+## Suporte a UI
+Excelente (via Flutter)
+
+## Compilação
+JIT (dev) e AOT (produção)
+
 # O que é o Dart?
 
 Dart é uma linguagem de programação moderna, criada pelo Google em 2011, com o objetivo de ser uma opção ao TypeScript para desenvolvimento
