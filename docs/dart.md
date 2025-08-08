@@ -25,6 +25,25 @@ Ela foi projetada para ser:
 
 
 ---
+
+# Por que o Dart é ótimo para o Flutter?
+	•	Compila para código nativo (performance real de app)
+	•	Hot reload por causa do JIT
+	•	Código compacto e legível
+	•	Ótimo suporte para UI declarativa (base do Flutter)
+
+
+📘 Resumo da Filosofia do Dart
+| Característica      | Dart                                     |
+|---------------------|------------------------------------------|
+| Paradigma           | Orientado a Objetos + Funcional          |
+| Tipagem             | Estática com inferência                  |
+| Segurança de null   | Sim (null safety)                        |
+| Assíncrono          | Sim, com Future, Stream                  |
+| Suporte a UI        | Excelente (via Flutter)                  |
+| Compilação          | JIT (dev) e AOT (produção)               |
+
+
 # Fundamentos da Linguagem Dart
 
 Vamos agora montar o alicerce que sustenta qualquer app Flutter:
@@ -38,7 +57,7 @@ Dart é uma linguagem orientada a objetos, e todos os tipos são objetos, inclus
 TIPOS DE DADOS
 int idade = 25;
 double altura = 1.70;
-bool ativo = true;
+bool lindo = true;
 String nome = "George";
 var cidade = "Cuiabá"; // inferência automática
 ```
@@ -72,8 +91,8 @@ Prática:
  ```
 void main() {
   Object dado = "George";
-  print(dado.toString());
-  print(dado.runtimeType); // String
+  print(dado.toString()); // String
+  print(dado.runtimeType); 
 }
 ```
 # 3. Tipo dynamic (sem verificação estática)
@@ -86,7 +105,9 @@ x = "texto";
 x = true;
 ```
 
-contudo, usar esse tipo é perigoso se mal utilizado: erros só aparecem em tempo de execução. Útil para JSONs não tipados e APIs onde os tipos são incertos.
+contudo, **usar esse tipo é perigoso se mal utilizado**, pois os erros só aparecem em tempo de execução.
+
+Útil para JSONs não tipados e APIs onde os tipos são incertos.
 
 # 4. Tipo Null (representa ausência de valor)
 
@@ -111,6 +132,7 @@ if (nome != null) {
 
 ##  int
 Representa números inteiros (positivos ou negativos), armazena com precisão total até 64 bits.
+
 Exemplo de uso:
 ```
 int numero1 = -3;
@@ -167,18 +189,19 @@ print(double.infinity);
 Testa se o número é valido caso seja retorna um True
 ```
 int numero1 = 10;
-print("Retorna se o número não é um núemro válido");
+print("Retorna True caso o número seja válido");
 print(numero1.isNaN);
 ```
 
 - .isNegative
 
-Testa se o núemro é negativo, caso seja retorna um True
+Testa se o numero é negativo, caso seja retorna um True
 ```
 int numero1 = 10;
-print("Retorna se o número não é um núemro válido");
+print("Retorna True caso o número seja negativo");
 print(numero1.isNaN);
 ```
+
 - .parse e .tryParse
 
 Realiza a conversão de uma String para um Inteiro
@@ -220,7 +243,7 @@ a = 3.14;     // double
 
 # 6. Booleanos: bool
 
-Em Dart, o tipo booleano, representado pela palavra-chave bool, possui dois valores possíveis: `true (verdadeiro)` e `false (falso)`. Ele é usado para representar valores lógicos em expressões condicionais e operações lógicas. 
+Em Dart, o tipo booleano, representado pela palavra-chave `bool`, possui dois valores possíveis: `true (verdadeiro)` e `false (falso)`. Ele é usado para representar valores lógicos em expressões condicionais e operações lógicas. 
 
 ```
 bool ativo = true;
@@ -315,7 +338,7 @@ Verifica se contém um trecho de uma String dentro de outra
 
 ```
 nome = "george"
-print(nome.contains("ge"));
+print(nome.contains("ge")); //true
 ```
 
 - .replaceAll()
@@ -324,12 +347,12 @@ Substitui todos os trechos de uma String em outra
 
 ```
 nome = "george"
-nome.replaceAll('e', '3')
+nome.replaceAll('e', '3') //g3org3
 ```
 
 - .substring(startIndex, endIndex)
 
-Recorta parte da String, sendo a posição 0 o inicio de qualquer String, o método .substring pode receber dois parametros, o primeiro indicando onde iniciar a coleta da String e o segundo indicando quantos carateres deve ser lidos, caso haja apenas um paremetro o método retorna toda a String iniciando pela posição informada.
+Recorta parte da String, sendo a posição 0 o inicio de qualquer String, o método `.substring` pode receber dois parametros (startIndex, endIndex), o primeiro indicando onde iniciar a coleta da String e o segundo indicando quantos carateres deve ser lidos, caso haja apenas um paremetro o método retorna toda a String iniciando pela posição informada.
 
 ```
 nome = "george"
@@ -469,7 +492,7 @@ print(lstInt.isNotEmpty); //true
 Retorna o índice da primeira ocorrência do elemento.
 
 ```
-frutas.indexOf("banaba");
+frutas.indexOf("banana");
 ```
 
 - .sort()
@@ -542,7 +565,9 @@ Map<String, int> frutas = {
 ```
 Neste exemplo, frutas é um mapa onde as chaves são strings (nomes das frutas) e os valores são inteiros (quantidades). 
 
-As chaves devem ser únicas, valores podem se repetir. o map é muito útil para representar objetos com propriedades.
+As chaves devem ser únicas, valores podem se repetir. O map é muito útil para representar objetos com propriedades.
+
+## Métodos comuns do tipo MAP:
 
 - Acessar um valor
 
@@ -1043,7 +1068,7 @@ Função que recebe uma função como paremtro:
 int executar( int numero, Funcion funf){
 	return func(numero);
 }
-``
+```
 
 **Principais características das funções em Dart:**
 1. Objetos de primeira classe: Funções podem ser tratadas como qualquer outro tipo de dado.
@@ -1085,78 +1110,241 @@ String saudar(String nome, {String? titulo}) {
 var dobrar = (int numero) => numero * 2;
 ```
 
+
 # 12. ENTRADA E SAIDA DE DADOS
 
 falta
 
+# 13. Orientação a Objetos
 
+A Orientação a Objetos (OO) em Dart é um paradigma de programação que permite organizar o código em torno de objetos, que são instâncias de classes. As classes definem os atributos (dados) e métodos (ações) que os objetos terão. Em Dart, a OO facilita a reutilização de código, a organização e a manutenção de projetos. 
 
-1. Sintaxe básica
+## Conceitos Fundamentais:
+
+- Classes: Modelos ou blueprints para criar objetos. Definem as características (atributos) e comportamentos (métodos) comuns a um grupo de objetos. 
+
+- Objetos: Instâncias de classes. Cada objeto possui seus próprios valores para os atributos definidos na classe. 
+
+- Atributos: Variáveis que armazenam os dados de um objeto. 
+
+- Métodos: Funções que definem o comportamento de um objeto. 
+
+- Encapsulamento: Ocultação dos detalhes internos de um objeto, expondo apenas uma interface para interação.
+
+- Herança: Mecanismo que permite que uma classe (subclasse) herde características e comportamentos de outra classe (superclasse), reutilizando código e estabelecendo relações entre classes.
+
+-  Polimorfismo: Capacidade de objetos de diferentes classes serem tratados de forma semelhante, através de uma interface comum. 
+
+**Benefícios da OO em Dart:**
+
+1. Reutilização de código: Através da herança e composição, evita-se a duplicação de código.
+2. Organização: O código fica mais estruturado e fácil de entender, com classes e objetos representando elementos do mundo real.
+3. Manutenibilidade: Modificações em uma classe não afetam outras classes, facilitando a manutenção e evolução do projeto.
+4. Legibilidade: O código se torna mais claro e intuitivo.
+5. Modularidade: Permite dividir o código em módulos independentes, facilitando o desenvolvimento e a colaboração. 
+
+# 14. Classes
+
+Em Dart, classes são modelos para a criação de objetos, encapsulando dados (variáveis de instância) e comportamentos (métodos). Uma classe define a estrutura e o comportamento de um objeto, enquanto um objeto é uma instância específica dessa classe. 
+
+## Conceitos:
+- Classe: Define um conjunto de propriedades (variáveis de instância) e métodos que um objeto terá.
+- Objeto: Uma instância específica de uma classe.
+- Variáveis de instância: Representam os dados de um objeto.
+- Métodos: Representam as funções ou ações que um objeto pode realizar.
+- Construtor: Um método especial usado para criar e inicializar objetos de uma classe.
+
+**Como definir uma classe em Dart:**
+1. Palavra-chave `class`: Use a palavra-chave class seguida do nome da classe (em maiúsculas, por convenção).
+2. Chaves `{}`: Delimite o corpo da classe com chaves, onde você definirá as propriedades e métodos. 
+
+Exemplo:
 
 ```
-void main() {
-  print('Olá, Dart!');
+class Carro {
+  String cor;
+  String modelo;
+
+  Carro(this.cor, this.modelo); // Construtor
+
+  void dirigir() {
+    print('O carro $cor está dirigindo!');
+  }
 }
 ```
-- main() é o ponto de entrada.
-- print() exibe algo no console.
 
- 
+**Explicando o exemplo:**
+- Carro é o nome da classe.
+- cor e modelo são propriedades (variáveis de instância) da classe.
+- dirigir() é um método que define um comportamento da classe. 
 
+## Instanciando um objeto:
 
-
- 
-
-7. Classes e Objetos
+Para criar um objeto (instância) da classe, use o operador new (opcional em Dart) seguido do nome da classe e parênteses: 
 
 ```
-class Pessoa {
-  String nome;
-  int idade;
+var meuCarro = new Carro(); // Cria uma instância da classe Carro
+```
 
-  Pessoa(this.nome, this.idade);
+## Acessando propriedades e métodos:
 
-  void apresentar() {
-    print("Olá, sou $nome e tenho $idade anos.");
+```
+meuCarro.cor = 'vermelho';
+meuCarro.modelo = 'Fusca';
+meuCarro.dirigir(); // Chama o método dirigir
+```
+
+# Encapsulamento
+
+Em Dart, encapsulamento é o princípio de OOP que permite agrupar dados e métodos que operam sobre esses dados em uma única unidade, protegendo a implementação interna de um objeto e expondo apenas uma interface controlada para interação externa. Isso é feito principalmente através do uso de modificadores de acesso (público e privado) e, em muitos casos, de getters e setters. 
+
+## Como funciona o encapsulamento em Dart:
+
+**Modificadores de Acesso:**
+- Público: Variáveis e métodos com modificador público (não há modificador explícito, por padrão são públicos) são acessíveis de qualquer lugar no código.
+- Privado: Variáveis e métodos com modificador privado `(prefixados com um sublinhado _)` são acessíveis apenas dentro da própria biblioteca onde são definidos.
+
+Exemplo:
+```
+class ContaBancaria {
+	double _saldo; //atributo privado
+	int conta; //atributo publico
+...
+}
+```
+
+## Getters e Setters
+
+São métodos especiais que permitem o acesso controlado a atributos privados. O getter permite a leitura do valor, enquanto o setter permite a modificação, potencialmente com validações. 
+
+Exemplo:
+
+```
+Exemplo:
+
+class ContaBancaria {
+  double _saldo;
+
+  ContaBancaria(this._saldo);
+
+  // Getter para o saldo
+  double getSaldo => _saldo;
+
+  // Setter para o saldo com validação
+  void setSaldo(double novoSaldo) {
+    if (novoSaldo >= 0) {
+      _saldo = novoSaldo;
+    } else {
+      print("Erro: Saldo não pode ser negativo.");
+    }
+  }
+
+  // Método para depósito
+  void depositar(double valor) {
+    if (valor > 0) {
+      saldo = saldo + valor;
+    } else {
+      print("Valor de depósito inválido.");
+    }
   }
 }
 
 void main() {
-  var p = Pessoa("George", 23);
-  p.apresentar();
+  var minhaConta = ContaBancaria(1000.0);
+  print("Saldo inicial: ${minhaConta.saldo}"); // Acessando o saldo via getter
+
+  minhaConta.depositar(500.0);
+  print("Saldo após depósito: ${minhaConta.saldo}");
+
+  minhaConta.saldo = -200.0; // Tentativa de definir um saldo negativo (será ignorada)
+  print("Saldo após tentativa de saldo negativo: ${minhaConta.saldo}");
+
+  //minhaConta._saldo = 500.0;  // Erro! Não é possível acessar diretamente o atributo privado
 }
 ```
+## Construtor
 
+Em Dart, um construtor é um método especial usado para criar e inicializar objetos de uma classe. Ele é chamado automaticamente quando um novo objeto é instanciado. Construtores em Dart podem ter parâmetros e podem ser padrão, nomeados ou de fábrica. 
 
+**Tipos de Construtores em Dart:**
+- Construtor Padrão (Default Constructor): É o construtor padrão de uma classe, que é chamado quando nenhum outro construtor é explicitamente definido. 
 
-9. Programação Assíncrona (Future e async/await)
+- Construtor Nomeado: Permite definir múltiplos construtores para uma mesma classe, usando nomes diferentes para cada um, o que facilita a criação de objetos com diferentes conjuntos de parâmetros. 
+
+- Construtor de Fábrica: Permite um controle mais flexível sobre a criação de objetos. Pode retornar uma instância existente ou de uma subclasse, em vez de criar sempre uma nova instância. 
+
+Exemplos:
 
 ```
-Future<String> buscarDados() async {
-  await Future.delayed(Duration(seconds: 2));
-  return "Dados carregados";
+
+class Pessoa {
+  String _nome;
+  int _idade;
+
+  // Construtor padrão
+	Pessoa(this.nome, this.idade);
+
+  // Construtor nomeado
+	Pessoa.semNome(int idade){
+		_idade = idade;
+	}
+
+
+  // Construtor de fábrica
+  factory Pessoa.fromJson(Map<String, dynamic> json) {
+    return Pessoa(json['nome'], json['idade']);
+  }
 }
 
-void main() async {
-  String resultado = await buscarDados();
-  print(resultado);
+```
+**Casos de uso:**
+1. Inicialização de atributos: Construtores são usados para definir os valores iniciais dos atributos de um objeto.
+2. Controle de acesso: Construtores podem ser privados (usando _ antes do nome) para restringir a criação de objetos a partir de outras classes.
+3. Implementação de padrões de projeto: Construtores de fábrica são úteis em padrões como Singleton, onde se deseja controlar a criação de instâncias únicas.
+4. Lógica complexa de inicialização: Construtores de fábrica podem ser usados para realizar operações complexas ou acessar dados externos antes de criar o objeto. 
+
+**Observações:**
+- Construtores não possuem tipo de retorno (nem mesmo void).
+- O uso de this dentro do construtor se refere ao atributo da instância da classe.
+- Em Dart, construtores podem ser chamados com a palavra-chave new (opcional) ou sem ela. 
+
+
+
+# Sobrescrita (overriding)
+
+Em Dart, sobrescrita (overriding) de métodos ocorre quando uma classe filha fornece sua própria implementação de um método que já existe na classe pai (superclasse). Isso permite que a classe filha personalize o comportamento do método herdado, adaptando-o às suas necessidades específicas. A sobrescrita é um exemplo de polimorfismo, permitindo que objetos de classes diferentes respondam de maneiras diferentes a um mesmo método. 
+
+**Como funciona a sobrescrita em Dart:**
+
+1. Herança: A sobrescrita pressupõe que a classe filha herda de uma classe pai.
+2. Assinatura do método: O método na classe filha deve ter a mesma assinatura do método na classe pai (mesmo nome, tipo de retorno e parâmetros).
+3. `@override`: O uso da anotação `@override` antes da declaração do método na classe filha é opcional, mas altamente recomendado para indicar que você está intencionalmente sobrescrevendo um método, facilitando a detecção de erros.
+4. Execução: Quando um método sobrescrito é chamado em um objeto da classe filha, a implementação da classe filha é executada, não a da classe pai. 
+
+Exemplo:
+
+```
+class Animal {
+  void fazerSom() {
+    print('Som genérico de animal');
+  }
+}
+
+class Cachorro extends Animal {
+  @override
+  void fazerSom() {
+    print('Au au');
+  }
+}
+
+void main() {
+  Animal animal = Animal();
+  animal.fazerSom(); // Saída: Som genérico de animal
+
+  Cachorro cachorro = Cachorro();
+  cachorro.fazerSom(); // Saída: Au au
+
+  Animal animalCachorro = Cachorro();
+  animalCachorro.fazerSom(); // Saída: Au au (polimorfismo)
 }
 ```
-
-Por que o Dart é ótimo para o Flutter?
-	•	Compila para código nativo (performance real de app)
-	•	Hot reload por causa do JIT
-	•	Código compacto e legível
-	•	Ótimo suporte para UI declarativa (base do Flutter)
-
-
-📘 Resumo da Filosofia do Dart
-| Característica      | Dart                                     |
-|---------------------|------------------------------------------|
-| Paradigma           | Orientado a Objetos + Funcional          |
-| Tipagem             | Estática com inferência                  |
-| Segurança de null   | Sim (null safety)                        |
-| Assíncrono          | Sim, com Future, Stream                  |
-| Suporte a UI        | Excelente (via Flutter)                  |
-| Compilação          | JIT (dev) e AOT (produção)               |
-
