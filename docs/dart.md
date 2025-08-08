@@ -1,45 +1,69 @@
 # Índice
-- [Introdução](#introdução)
+
 - [O que é o Dart?](#dart)
-  - [Objetivo](#objetivo)
-  - [Público-alvo](#público-alvo)
-- [Características do Dart](#características-do-dart)
-  - [Paradigma](#paradigma)
-  - [Tipagem](#tipagem)
-  - [Segurança de null](#segurança-de-null)
-  - [Assíncrono](#assíncrono)
-  - [Suporte a UI](#suporte-a-ui)
-  - [Compilação](#compilação)
+- [Breve História do Dart](#breve-historia-do-dart)
+- [Por que o Dart é ótimo para o Flutter?](#por-que-o-dart-e-otimo-para-o-flutter)
+- [Fundamentos da Linguagem Dart](#fundamentos-da-linguagem-dart)
+  - [Tipos de Dados](#tipos-de-dados)
+    - [1. Hierarquia de Tipos em Dart](#1-hierarquia-de-tipos-em-dart)
+    - [2. Tipo Object (supertipo universal)](#2-tipo-object-supertipo-universal)
+    - [3. Tipo dynamic (sem verificação estática)](#3-tipo-dynamic-sem-verificacao-estatica)
+    - [4. Tipo Null (representa ausência de valor)](#4-tipo-null-representa-ausencia-de-valor)
+    - [5. Números: int, double, num](#5-numeros-int-double-num)
+      - [int](#int)
+      - [Métodos comuns do tipo INTEIRO](#metodos-comuns-do-tipo-inteiro)
+      - [double](#double)
+      - [Métodos comuns do tipo DOUBLE](#metodos-comuns-do-tipo-double)
+      - [num](#num)
+    - [6. Booleanos: bool](#6-booleanos-bool)
+    - [7. Texto: String](#7-texto-string)
+      - [Aspas simples ou duplas](#aspas-simples-ou-duplas)
+      - [Strings multilinha ou Dicionário](#strings-multilinha-ou-dicionario)
+      - [Interpolação de Strings](#interpolacao-de-strings)
+      - [Métodos comuns do tipo STRING](#metodos-comuns-do-tipo-string)
+    - [String imutável e segurança!](#string-imutavel-e-seguranca)
+    - [8. Coleções: List, Set, Map](#8-colecoes-list-set-map)
+      - [1. List: Lista Ordenada de Elementos](#1-list-lista-ordenada-de-elementos)
+      - [Métodos comuns do tipo LIST](#metodos-comuns-do-tipo-list)
+      - [2. Set: Conjunto Não Ordenado de Valores Únicos](#2-set-conjunto-nao-ordenado-de-valores-unicos)
+      - [Métodos comuns do tipo SET](#metodos-comuns-do-tipo-set)
+      - [3. Map: Estrutura Chave → Valor](#3-map-estrutura-chave-valor)
+      - [Métodos comuns do tipo MAP](#metodos-comuns-do-tipo-map)
+    - [9. Const vs Final vs Var](#9-const-vs-final-vs-var)
+      - [const (Constante de Tempo de Compilação)](#const-constante-de-tempo-de-compilacao)
+      - [final (Variável de Atribuição Única)](#final-variavel-de-atribuicao-unica)
+      - [var (Variável Genérica)](#var-variavel-generica)
+      - [Diferenças entre as Chaves](#diferencas-entre-as-chaves)
+    - [10. Estruturas Condicionais e de Repetição](#10-estruturas-condicionais-e-de-repeticao)
+      - [Estruturas Condicionais](#estruturas-condicionais)
+        - [if](#if)
+        - [else](#else)
+        - [else if](#else-if)
+        - [if com operador ternário (condição em uma linha)](#if-com-operador-ternario-condicao-em-uma-linha)
+        - [switch](#switch)
+        - [Switch Expressions (Dart 3)](#switch-expressions-dart-3)
+      - [Estruturas de Repetição](#estruturas-de-repeticao)
+        - [for](#for)
+        - [for in](#for-in)
+        - [Outras coleções](#outras-colecoes)
+        - [while](#while)
+        - [do-while](#do-while)
+        - [Diferença entre while e do-while](#diferenca-entre-while-e-do-while)
+    - [11. Funções em Dart](#11-funcoes-em-dart)
+    - [12. ENTRADA E SAIDA DE DADOS](#12-entrada-e-saida-de-dados)
+    - [13. Orientação a Objetos](#13-orientacao-a-objetos)
+      - [Conceitos Fundamentais](#conceitos-fundamentais)
+    - [14. Classes](#14-classes)
+      - [Conceitos](#conceitos)
+      - [Instanciando um objeto](#instanciando-um-objeto)
+    - [Encapsulamento](#encapsulamento)
+      - [Como funciona o encapsulamento em Dart](#como-funciona-o-encapsulamento-em-dart)
+      - [Getters e Setters](#getters-e-setters)
+    - [Construtor](#construtor)
+    - [Sobrescrita (overriding)](#sobrescrita-overriding)
+  
 
 ---
-
-# Introdução
-
-## Objetivo
-Texto do objetivo...
-
-## Público-alvo
-Texto do público-alvo...
-
-# Características do Dart
-
-## Paradigma
-Orientado a Objetos + Funcional
-
-## Tipagem
-Estática com inferência
-
-## Segurança de null
-Sim (null safety)
-
-## Assíncrono
-Sim, com Future, Stream
-
-## Suporte a UI
-Excelente (via Flutter)
-
-## Compilação
-JIT (dev) e AOT (produção)
 
 # Dart?
 
