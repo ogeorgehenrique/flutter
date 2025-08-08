@@ -1,5 +1,6 @@
 # Índice
 - [Introdução](#introdução)
+- [O que é o Dart?](#dart)
   - [Objetivo](#objetivo)
   - [Público-alvo](#público-alvo)
 - [Características do Dart](#características-do-dart)
@@ -40,7 +41,7 @@ Excelente (via Flutter)
 ## Compilação
 JIT (dev) e AOT (produção)
 
-# O que é o Dart?
+# Dart?
 
 Dart é uma linguagem de programação moderna, criada pelo Google em 2011, com o objetivo de ser uma opção ao TypeScript para desenvolvimento
 Web.
