@@ -1399,3 +1399,14 @@ void main() {
   animalCachorro.fazerSom(); // Saída: Au au (polimorfismo)
 }
 ```
+
+# 18. Tratamento de Erros
+
+try catch
+
+try catch finally
+
+throw
+
+
+
